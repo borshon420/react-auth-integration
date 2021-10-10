@@ -3,7 +3,11 @@ import './App.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register';
+import Shipping from './components/Shipping/Shipping';
+import AuthProvider from './context/AuthProvider';
 
 
 
@@ -11,6 +15,7 @@ import Register from './components/Register/Register';
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
         <Header></Header>
         <Switch>
@@ -26,8 +31,15 @@ function App() {
           <Route path="/register">
             <Register></Register>
           </Route>
+          <PrivateRoute path="/shipping">
+            <Shipping></Shipping>
+          </PrivateRoute>
+          <PrivateRoute path="/placeorder">
+            <PlaceOrder></PlaceOrder>
+          </PrivateRoute>
         </Switch>
       </Router>
+      </AuthProvider>
     </div>
   );
 }
